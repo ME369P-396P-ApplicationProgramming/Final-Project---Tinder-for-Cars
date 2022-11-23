@@ -1,9 +1,8 @@
-import kivy
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
 from kivy.uix.screenmanager import ScreenManager, Screen 
-from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.anchorlayout import AnchorLayout
 from kivy.graphics import Color, Rectangle
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import AsyncImage
@@ -13,15 +12,15 @@ from kivy.uix.image import AsyncImage
 #Define our different screens
 # class AwesomeApp():
 
-class CustomLayout(FloatLayout):
-    def __init__(self,**kwargs):
-    # make sure we aren't overriding any important functionality
-            super(CustomLayout, self).__init__(**kwargs)
+# class CustomLayout(FloatLayout):
+#     def __init__(self):
+#     # make sure we aren't overriding any important functionality
+#             super(CustomLayout, self).__init__(**kwargs)
 
-            with self.canvas.before:
-                Color(0, 1, 0, 1)  # green; colors range from 0-1 instead of 0-255
-                self.rect = Rectangle(size=self.size, pos=self.pos)
-        #Entry Page
+#             with self.canvas.before:
+#                 Color(0, 1, 0, 1)  # green; colors range from 0-1 instead of 0-255
+#                 self.rect = Rectangle(size=self.size, pos=self.pos)
+#Entry Page
 class FirstWindow(Screen):
     
 	pass
@@ -68,8 +67,12 @@ class AwesomeApp(App):
 #         return FirstWindow()
 # 		return kv
     def build(self):
+        return kv
        # root = RootWidget()
-       c = CustomLayout()
+        # c = CustomLayout()
+        # self.theme_cls.primary_palette = "Red"
+        # self.theme_cls.primary_hue = "300"
+
        # root.add_widget(c)
        
 

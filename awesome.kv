@@ -1,36 +1,88 @@
 WindowManager:
     FirstWindow:
     SecondWindow:
+    ThirdWindow:
+    FourthWindow:
 
+
+
+<Layout_Default>
+    BoxLayout:
+        orientation: "vertical"
+        size: root.width, root.height
+        padding: 200
+        spacing: 50
+        
+<Button>
+    font_size: 32
+    background_normal=(1,.3,.4,.85)
+    background_color=(1,.3,.4,.85)
+
+            
+#Entry Page
 <FirstWindow>:
     name: "main"
-
     GridLayout:
-        cols:1
+    Button:
+        TextInput:
+            Zipcode = TextInput(text="ZipCode")
+            
+    Button:
+        Minimum = TextInput(text="Price Minimum")
+        Maximum = TextInput(text="Price Maximum")
+        on_release:
+            app.root.current = "like"
+    
 
-        GridLayout:
-            cols: 2
-
-            Label:
-                text: "ZipCode "
-
-            TextInput:
-                id: passw
-                multiline: False
-
-        Button:
-            text: "Price Max"
-            on_release:
-                app.root.current = "second" if passw.text == "tim" else "main"
-                root.manager.transition.direction = "left"
-
-
+#like page
 <SecondWindow>:
-    name: "second"
+    name: "like"
+
+    Button:
+        text: "Home"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+    Button:
+        text: "Like Page"
+        on_release:
+            app.root.current = "storage"
+            root.manager.transition.direction = "left"
+    Button:
+        text: "More Information"
+        on_release:
+            app.root.current = "storage"
+            root.manager.transition.direction = "down"
+    Button:
+        text: "YES"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+            
+    Button:
+        text: "NO"
+        on_release:
+            
+            
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+            
+<ThirdWindow>:
+    name: "storage"
 
     Button:
         text: "Go Back"
         on_release:
             app.root.current = "main"
             root.manager.transition.direction = "right"
+            
+<FourthWindow>:
+    name: "info"
+
+    Button:
+        text: "Go Back"
+        on_release:
+            app.root.current = "main"
+            root.manager.transition.direction = "right"
+        
         
