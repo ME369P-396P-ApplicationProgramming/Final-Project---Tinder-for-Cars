@@ -1,3 +1,10 @@
+#styling
+WindowManager:
+    FirstWindow:
+    SecondWindow:
+    ThirdWindow:
+    FourthWindow:
+
 # Button Default Colors
 <MyButton@Button>:
     background_normal: ''
@@ -6,6 +13,24 @@
 #Label Default Font and Color
 <MyLabel@Label>:
     color: 1,0,1,1
+
+<tan>:
+    Color:      
+        rgb: [.84,.78,.79]
+<pink>:
+    Color:
+        rgb: [.9,.46,.51]
+<grey>:
+    Color:
+        rgb: [.85,.85,.85]
+<black>:
+    Color:
+        rgb: [.33,.31,.31]
+<beige>:
+    Color:
+        rgb: [.91,.89,.89]
+
+
 
 
     #navigation default
@@ -22,6 +47,8 @@
                     app.root.current = "main"
             MyButton:
                 text: "Like"
+
+
 
 
 ##Entry Page
@@ -66,9 +93,9 @@
                 on_release:
                     app.root.current = "like"
             Button:
-                text: "storage"
+                text: "Like Storage"
                 on_release:
-                    app.root.current = "Like Storage"
+                    app.root.current = "storage"
 
 
 #like page
@@ -76,23 +103,18 @@
     name: "like"
     canvas:
         Color:
-            rgb: [.5, .324, .384]
+            rgb: [.91,.89,.89]
         Rectangle:
             pos: self.pos
             size: self.size
-    BoxLayout: 
     AnchorLayout:
+        size_hint: .2,.2
         anchor_x: "center"
         anchor_y: "top"
+        
         # creating Canvas
-        canvas:
-            Color:
-                rgb: [.5, .324, .384]
-            Rectangle:
-                pos: self.pos
-                size: self.size
-        BoxLayout:
-            orientation: "horizontal"
+        GridLayout:
+            cols:3
             Button:
                 text: "Home"
                 on_release:
@@ -108,12 +130,19 @@
                 on_release:
                     app.root.current = "storage"
                     root.manager.transition.direction = "down"
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "bottom"
+        size_hint: .2,.2
+        GridLayout:
+            cols:1
             Button:
                 text: "YES"
                 on_release:
                     app.root.current = "like"
                     root.manager.transition.direction = "right"
-
+        GridLayout:
+            cols:1
             Button:
                 text: "NO"
                 on_release:
@@ -122,7 +151,8 @@
 
 <ThirdWindow>:
     name: "storage"
-    AnchorLayout:
+    FloatLayout:
+        size_hint:.25,.25
         anchor_x: "center"
         anchor_y: "top"
         Button:

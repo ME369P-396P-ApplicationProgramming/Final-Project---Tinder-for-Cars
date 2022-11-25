@@ -8,6 +8,9 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import AsyncImage
 
 
+
+
+
 #logic
 
 class FirstWindow(Screen):
@@ -26,20 +29,7 @@ class ThirdWindow(Screen):
 #More Information Page
 class FourthWindow(Screen):
     
-    # def build(self):
-    #     # # use a (r, g, b, a) tuple
-    #     # btn = Button(text ="Back",
-    #     #            font_size ="20sp",
-    #     #            background_color =(1, 1, 1, 1),
-    #     #            color =(1, 1, 1, 1),
-    #     #            size =(32, 32),
-    #     #            size_hint =(.2, .2),
-    #     #            pos =(300, 250))
- 
-    #     # # bind() use to bind the button to function callback
-    #     # btn.bind(on_press = self.callback)
-    #     # return btn
-    
+
 	pass
 
 class WindowManager(ScreenManager):
@@ -52,19 +42,17 @@ kv = Builder.load_file('awesome.kv')
 
 
 class AwesomeApp(App):
-#  	def build(self):
-#         return FirstWindow()
-# 		return kv
-    def build(self):
-        return FirstWindow()
-        return kv
-       # root = RootWidget()
-        # c = CustomLayout()
-        # self.theme_cls.primary_palette = "Red"
-        # self.theme_cls.primary_hue = "300"
 
-       # root.add_widget(c)
-       
+    def build(self):
+        sm = ScreenManager()
+        sm.add_widget(FirstWindow(name='main'))
+        sm.add_widget(SecondWindow(name='like'))
+        sm.add_widget(ThirdWindow(name='storage'))
+        sm.add_widget(FourthWindow(name='info'))
+        sm.current = 'main'
+        return sm
+        # return kv
+
 
 if __name__ == '__main__':
     
