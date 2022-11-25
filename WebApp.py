@@ -8,19 +8,8 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.image import AsyncImage
 
 
+#logic
 
-#Define our different screens
-# class AwesomeApp():
-
-# class CustomLayout(FloatLayout):
-#     def __init__(self):
-#     # make sure we aren't overriding any important functionality
-#             super(CustomLayout, self).__init__(**kwargs)
-
-#             with self.canvas.before:
-#                 Color(0, 1, 0, 1)  # green; colors range from 0-1 instead of 0-255
-#                 self.rect = Rectangle(size=self.size, pos=self.pos)
-#Entry Page
 class FirstWindow(Screen):
     
 	pass
@@ -67,6 +56,7 @@ class AwesomeApp(App):
 #         return FirstWindow()
 # 		return kv
     def build(self):
+        return FirstWindow()
         return kv
        # root = RootWidget()
         # c = CustomLayout()
