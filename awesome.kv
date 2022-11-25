@@ -1,89 +1,98 @@
-#styling
-WindowManager:
-    FirstWindow:
-    SecondWindow:
-    ThirdWindow:
-    FourthWindow:
+# Button Default Colors
+<MyButton@Button>:
+    background_normal: ''
+    background_color: 1, .3, .4, .85
+    
+#Label Default Font and Color
+<MyLabel@Label>:
+    color: 1,0,1,1
+
 
     #navigation default
 <NavigationBar>:
     name: "navigationbar"
     FloatLayout:
-        size_hint: 0.25,0.25
-        pos: 500,500
-            GridLayout:
-            cols:1
-            Button:
+        size_default: [None,None]
+        size_hint: [0.25,0.25]
+        pos_hint: [500,500]
+        GridLayout:
+            MyButton:
                 text: "Home"
                 on_release:
-                        app.root.current = "main"
-            cols:2      
-            Button:
-                text: "Home"
-                TextInput:
-                    id: minimum
-            cols:3 
-            Button:
-                TextInput:
-                    id: maximum
-                    on_release:
-                        app.root.current = "like"
+                    app.root.current = "main"
+            MyButton:
+                text: "Like"
 
 
-
-            
-#Entry Page
+##Entry Page
 <FirstWindow>:
     name: "main"
+    canvas:
+        Color:
+            rgb: [.9,.46,.51]
+            #rgb: [.91,.89,.89]
+        Rectangle:
+            pos: self.pos
+            size: self.size
     GridLayout:
-        padding: 200,200,200,200
+        padding: 200,200
         cols: 1
-            GridLayout:
-            cols:1
+        GridLayout:
+            cols:2
             Label:
                 text: "ZipCode: "
-            cols: 2
             TextInput:
                 id: zipcode
-            cols: 1
+        GridLayout:
+            cols:3
+            Label:
                 text: "Price Range: "
-            cols:2
             TextInput:
                 id: min_price
-            cols:3
             TextInput:
                 id: max_price
-                on_release:
-                        app.root.current = "like"
-    FloatLayout:
-        size_hint: .25,.25
-        pos= 500,500
-            GridLayout:
+        GridLayout:
             cols:1
             Button:
-                text: "Home"
+                text: "Submit"
+                on_release: "like"
+    FloatLayout:
+        pos_hint:{"left":.2,"bottom":.2} 
+        size_hint:.2,.2
+        GridLayout:
+            cols: 1
+            Button:
+                text: "Like"
                 on_release:
-                        app.root.current = "main"
-            cols:2      
+                    app.root.current = "like"
             Button:
-                text: "Home"
-                TextInput:
-                    id: minimum
-            cols:3 
-            Button:
-                TextInput:
-                    id: maximum
-                    on_release:
-                        app.root.current = "like"
-    
+                text: "storage"
+                on_release:
+                    app.root.current = "Like Storage"
+
 
 #like page
 <SecondWindow>:
     name: "like"
-    AnchoredLayout:
-        pos_hint: "bottom"
+    canvas:
+        Color:
+            rgb: [.5, .324, .384]
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    BoxLayout: 
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "top"
+        # creating Canvas
+        canvas:
+            Color:
+                rgb: [.5, .324, .384]
+            Rectangle:
+                pos: self.pos
+                size: self.size
         BoxLayout:
-            pos_hint:"horizontal"   
+            orientation: "horizontal"
             Button:
                 text: "Home"
                 on_release:
@@ -104,25 +113,24 @@ WindowManager:
                 on_release:
                     app.root.current = "like"
                     root.manager.transition.direction = "right"
-                    
+
             Button:
                 text: "NO"
                 on_release:
-                    on_release:
-                        app.root.current = "like"
-                        root.manager.transition.direction = "left"
-                        
+                    app.root.current = "like"
+                    root.manager.transition.direction = "left"
+
 <ThirdWindow>:
     name: "storage"
-    AnchoredLayout:
-        pos_hint: "top"
-        size_hint: 300,300
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "top"
         Button:
             text: "Go Back"
             on_release:
                 app.root.current = "like"
                 root.manager.transition.direction = "right"
-            
+
 <FourthWindow>:
     name: "info"
 
@@ -131,5 +139,3 @@ WindowManager:
         on_release:
             app.root.current = "main"
             root.manager.transition.direction = "right"
-        
-        
