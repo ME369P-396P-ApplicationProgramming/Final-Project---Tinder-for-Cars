@@ -107,14 +107,13 @@ WindowManager:
         Rectangle:
             pos: self.pos
             size: self.size
-    AnchorLayout:
-        size_hint: .2,.2
-        anchor_x: "center"
-        anchor_y: "top"
-        
-        # creating Canvas
+
+    RelativeLayout:
+        pos_hint: {"top":1,"right":1}
+        size_hint: .5,.1                      
         GridLayout:
-            cols:3
+            
+            rows:1
             Button:
                 text: "Home"
                 on_release:
@@ -130,37 +129,41 @@ WindowManager:
                 on_release:
                     app.root.current = "storage"
                     root.manager.transition.direction = "down"
-    AnchorLayout:
-        anchor_x: "center"
-        anchor_y: "bottom"
-        size_hint: .2,.2
+    RelativeLayout:
+        pos_hint: {"bottom":1,"center_x":.5}
+        size_hint: .2,.2   
         GridLayout:
-            cols:1
+            rows:1
             Button:
                 text: "YES"
                 on_release:
                     app.root.current = "like"
                     root.manager.transition.direction = "right"
-        GridLayout:
-            cols:1
             Button:
                 text: "NO"
                 on_release:
                     app.root.current = "like"
                     root.manager.transition.direction = "left"
+                    
+                    
+                         
 
 <ThirdWindow>:
     name: "storage"
     FloatLayout:
-        size_hint:.25,.25
-        anchor_x: "center"
-        anchor_y: "top"
-        Button:
-            text: "Go Back"
-            on_release:
-                app.root.current = "like"
-                root.manager.transition.direction = "right"
-
+        pos_hint:{"left":.2,"bottom":.2} 
+        size_hint:.2,.2
+        GridLayout:
+            cols: 1
+            Button:
+                text: "Like"
+                on_release:
+                    app.root.current = "like"
+            Button:
+                text: "Home"
+                on_release:
+                    app.root.current = "main"
+ 
 <FourthWindow>:
     name: "info"
 
