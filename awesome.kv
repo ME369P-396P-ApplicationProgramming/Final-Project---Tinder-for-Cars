@@ -70,6 +70,12 @@ WindowManager:
                 text: "ZipCode: "
             TextInput:
                 id: zipcode
+         GridLayout:
+            cols:2
+            Label:
+                text: "Mileage:"
+            TextInput:
+                id: mileage
         GridLayout:
             cols:3
             Label:
@@ -85,7 +91,7 @@ WindowManager:
                 on_release: "like"
     FloatLayout:
         pos_hint:{"left":.2,"bottom":.2} 
-        size_hint:.2,.2
+        size_hint:.15,.15
         GridLayout:
             cols: 1
             Button:
