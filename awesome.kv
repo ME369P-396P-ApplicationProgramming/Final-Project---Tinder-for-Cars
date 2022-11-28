@@ -33,7 +33,7 @@ WindowManager:
 
 
 
-    #navigation default
+#navigation default
 <NavigationBar>:
     name: "navigationbar"
     FloatLayout:
@@ -57,7 +57,7 @@ WindowManager:
     canvas:
         Color:
             rgb: [.9,.46,.51]
-            #rgb: [.91,.89,.89]
+
         Rectangle:
             pos: self.pos
             size: self.size
@@ -65,18 +65,39 @@ WindowManager:
         padding: 200,200
         cols: 1
         GridLayout:
+            canvas:
+                Color:
+                    rgb: [.33,.31,.31]
+    
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
             cols:2
             Label:
                 text: "ZipCode: "
             TextInput:
                 id: zipcode
-         GridLayout:
+        GridLayout:
+            canvas:
+                Color:
+                    rgb: [.33,.31,.31]
+    
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
             cols:2
             Label:
                 text: "Mileage:"
             TextInput:
                 id: mileage
         GridLayout:
+            canvas:
+                Color:
+                    rgb: [.33,.31,.31]
+    
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
             cols:3
             Label:
                 text: "Price Range: "
