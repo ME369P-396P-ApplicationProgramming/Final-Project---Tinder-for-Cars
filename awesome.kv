@@ -109,7 +109,8 @@ WindowManager:
             cols:1
             Button:
                 text: "Submit"
-                on_release: "like"
+                on_release: 
+                    app.root.current = "like"
     FloatLayout:
         pos_hint:{"left":.2,"bottom":.2} 
         size_hint:.15,.15
@@ -164,6 +165,7 @@ WindowManager:
             Button:
                 text: "YES"
                 on_release:
+                    id: yes
                     app.root.current = "like"
                     root.manager.transition.direction = "right"
             Button:
