@@ -106,55 +106,46 @@ def get_car_info(URL):
         price = int(list_price.replace(",", ""))
         
         import_info.pop(0)
+        
+        #here
+        
+        images = soup.find_all('img')
          
-        image = get_images(URL)
-             
+        image_urls = []
+
+        for img in images:
+            if img.has_attr('src') and ('https://images.autotrader.com' in img['src']):
+                image_urls.append(img['src'])
+
+        if len(image_urls) == 0:
+            image_urls.append("no photos")
+        else:
+            for i in range(len(image_urls)):
+                image_urls[i] = image_urls[i].split("/")
+                
+                if image_urls[i][3] == "resize":
+                    l = 1500
+                    image_urls[i][4] = image_urls[i][4].split("x")
+                    w = round(l/(int(image_urls[i][4][0])/int(image_urls[i][4][1])))
+                    
+                    image_urls[i][4][0] = str(l)
+                    image_urls[i][4][1] = str(w)
+                    
+                    image_urls[i][4] = "x".join(image_urls[i][4]) 
+                    
+                else:
+                    l = 1500
+                    w = round(l/(int(image_urls[i][4])/int(image_urls[i][5])))
+                    
+                    image_urls[i][4] = str(l)
+                    image_urls[i][5] = str(w)
+                image_urls[i] = "/".join(image_urls[i] ) 
     except:
         pass
     
-    return [make_model, year, miles, size, price, import_info, URL]
+    return [make_model, year, miles, size, price, import_info, URL, image_urls[0]]
 
-def get_images(URL):
-    page = requests.get(URL)
-    page.status_code
-    
-    soup = BeautifulSoup(page.content, 'html.parser')
-    
-    images = soup.find_all('img')
-     
-    image_urls = []
 
-    for img in images:
-        if img.has_attr('src') and ('https://images.autotrader.com' in img['src']):
-            image_urls.append(img['src'])
-
-    if len(image_urls) == 0:
-        image_urls.append("no photos")
-    else:
-        for i in range(len(image_urls)):
-            image_urls[i] = image_urls[i].split("/")
-            
-            if image_urls[i][3] == "resize":
-                l = 1500
-                image_urls[i][4] = image_urls[i][4].split("x")
-                w = round(l/(int(image_urls[i][4][0])/int(image_urls[i][4][1])))
-                
-                image_urls[i][4][0] = str(l)
-                image_urls[i][4][1] = str(w)
-                
-                image_urls[i][4] = "x".join(image_urls[i][4]) 
-                
-            else:
-                l = 1500
-                w = round(l/(int(image_urls[i][4])/int(image_urls[i][5])))
-                
-                image_urls[i][4] = str(l)
-                image_urls[i][5] = str(w)
-            image_urls[i] = "/".join(image_urls[i] )
-    
-    im = image_urls[0]
-    
-    return im
 
 def analysis_cars(year, milage, car_style): #list of car attributes
     mean_year = st.mean(year)
@@ -196,7 +187,8 @@ def get_all_cars(zip_code,r ,min_price, max_price):
     cars = []
     
     for i in range(len(urls)):
-        cars.append([ i, *get_car_info(urls[i]),get_images(urls[i])])
+        cars.append([ i, *get_car_info(urls[i])])
+        print(cars)
     
     return cars
 
