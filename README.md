@@ -4,7 +4,7 @@ This will create a web application that will display cars in surrounding areas t
 
 # Members
 
-Hannah Long, Rohith Maturi, Kevin Nguyen. Emil Søeberg
+Hannah Long, Rohith Maturi, Kevin Nguyen, Emil Søeberg
 
 # Overview
 
