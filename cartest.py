@@ -1,5 +1,4 @@
 import streamlit as st
-import main
 import Backend_logic as BCL
 
 def input_page():

@@ -1,4 +1,10 @@
-# from Liked import *
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Nov 30 14:50:10 2022
+
+@author: rohit
+"""
+
 import streamlit as st
 import sys
 import Backend_logic as BCL
@@ -37,7 +43,3 @@ with col4:
         pass
 with col5:
         pass
-
-    
-        
-        
