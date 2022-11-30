@@ -1,15 +1,11 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Nov 14 20:18:54 2022
 
-@author: emils
-"""
 
 import requests
 from bs4 import BeautifulSoup
 import selenium
 import numpy as np
-import statistics as st
+import statistics as stat
 import random
 import math as m
 
@@ -148,14 +144,14 @@ def get_car_info(URL):
         print(image_urls)
         print("this is error")
 
-def analysis_cars(year, milage, car_style): #list of car attributes
-    mean_year = st.mean(year)
-    sd_year = st.stdev(year)
+def analysis_cars(year, milage, car_style): #list of car attributesr
+    mean_year = stat.mean(year)
+    sd_year = stat.stdev(year)
     
     year_range = [mean_year-sd_year,mean_year+sd_year]
     
-    mean_milage = st.mean(milage)
-    sd_milage = st.stdev(milage)
+    mean_milage = stat.mean(milage)
+    sd_milage = stat.stdev(milage)
     
     milage_range = [mean_milage-sd_milage,mean_milage+sd_milage]
     
@@ -163,8 +159,8 @@ def analysis_cars(year, milage, car_style): #list of car attributes
     
     style_size = [style.index(item) for item in car_style]
     
-    mean_style = st.mean(style_size)
-    sd_style = st.stdev(style_size)
+    mean_style = stat.mean(style_size)
+    sd_style = stat.stdev(style_size)
     
     style_range = [mean_style-sd_style,mean_style+sd_style]
 
@@ -194,6 +190,8 @@ def get_all_cars(zip_code,r ,min_price, max_price):
 
 def show_car(car):
     print(car)
+    
+    return car
 
 def find_perfect_car(cars, year, milage, car_style): 
     z_score = []
@@ -207,8 +205,8 @@ def find_perfect_car(cars, year, milage, car_style):
     
     return cars[z_score.index(min(z_score))]
 
-def find_q_cars(all_cars, car_ranges):
-    global drawn_id
+def find_q_cars(all_cars, car_ranges,drawn_id):
+    #global drawn_id
     style = ["Hatchback","Coupe" , "Sedan", "Convertible", "Wagon", "Sport Utility", "Truck", "Van" ]
     q_cars = []
     
@@ -218,14 +216,34 @@ def find_q_cars(all_cars, car_ranges):
     
     return q_cars
 
+def import_inputs(info):
+    MinPrice =  info[0]
+    MaxPrice = info[1] 
+    zipcode =  info[2] 
+    radius =  info[3] 
+    return [MinPrice,MaxPrice,zipcode,radius]
 
-def run_logic():
-    zip_code = input("Zip: ")
+def run_logic(info):
+    '''
+    zip_code = 
     r = input("Radius: ")
     min_price = input("Min. price: ")
     max_price = input("Max. price: ")
+    '''
+    ## Fake Inputs
+   
+    
+    min_price,max_price,zip_code,r = info
+    
+
     
     all_cars = get_all_cars(zip_code,r ,min_price, max_price)
+    
+    return all_cars
+    # send all_cars to liked_cars(all_cars)
+
+def run_logic2(all_cars):
+   
     liked_cars = []
     q_cars = all_cars.copy()
     print(len(all_cars))
@@ -243,11 +261,17 @@ def run_logic():
             while rand_int in drawn_id:
                 rand_int = random.randint(0, len(q_cars)-1)
             drawn_id.append(rand_int)
+            #car = all_cars[rand_int]
             show_car(all_cars[rand_int])
+            
+            
+            
             nice = int(input("Like? (1/0): "))
             if nice == 1:
                 liked_cars.append(q_cars[rand_int])
             end = len(liked_cars)
+            
+        
         cont = int(input("Continue? (1/0): "))
         car_ranges = analysis_cars(np.array(liked_cars,dtype=object).T[2], np.array(liked_cars,dtype=object).T[3], np.array(liked_cars,dtype=object).T[4])
         q_cars = find_q_cars(all_cars, car_ranges)
@@ -255,7 +279,10 @@ def run_logic():
         
         
     
-    print(find_perfect_car(all_cars,st.mean(car_ranges[0]),st.mean(car_ranges[1]),st.mean(car_ranges[2])))
-    
-run_logic()
-    
+    print(find_perfect_car(all_cars,stat.mean(car_ranges[0]),stat.mean(car_ranges[1]),stat.mean(car_ranges[2])))
+
+'''
+print("program start")
+info = [6000,8000,78705,50]
+run_logic(info)
+'''
