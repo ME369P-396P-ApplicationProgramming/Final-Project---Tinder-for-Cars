@@ -1,109 +1,56 @@
 import streamlit as st
+import sys
+import Backend_logic as BCL
+import cartest
 import numpy as np
-from streamlit.components.v1 import html
+import statistics as stat
+import random
+import math as m
 
-
-st.set_page_config(page_title = "liked")
-
-#set initial car option
-def import_car():
-    car_obj=np.array([1, 'Toyota Camry XLE', 1998, 157967, 'Sedan', 3242, ['2.2L 4-Cylinder Gas Engine', '4-Speed Automatic Transmission', '2 wheel drive - front', '20 City / 28 Highway'], 'https://www.autotrader.com/cars-for-sale/vehicledetails.xhtml?listingId=659651473&minPrice=355&maxPrice=3333&city=Austin&state=TX&zip=78705&searchRadius=50&marketExtension=include&isNewSearch=false&showAccelerateBanner=false&sortBy=relevance&numRecords=100&listingTypes=USED&referrer=%2Fcars-for-sale%2Fcars-between-355-and-3333%2Faustin-tx-78705%3Fdma%3D%26searchRadius%3D50%26priceRange%3D%26location%3D%26marketExtension%3Dinclude%26isNewSearch%3Dfalse%26showAccelerateBanner%3Dfalse%26sortBy%3Drelevance%26numRecords%3D100&clickType=listing', 'https://images.autotrader.com/borderscaler/1500/1125/2d363e/hn/c/65158eba7cb84337900862ab8864e090.jpg'])
-    return car_obj
-
-def next_car():
-    car_obj=np.array([2, 'Your MOm', 2000, 100, 'Blue', 7802, ['2.2L 4-Cylinder Gas Engine', '4-Speed Automatic Transmission', '2 wheel drive - front', '20 City / 28 Highway'], 'https://www.autotrader.com/cars-for-sale/vehicledetails.xhtml?listingId=659651473&minPrice=355&maxPrice=3333&city=Austin&state=TX&zip=78705&searchRadius=50&marketExtension=include&isNewSearch=false&showAccelerateBanner=false&sortBy=relevance&numRecords=100&listingTypes=USED&referrer=%2Fcars-for-sale%2Fcars-between-355-and-3333%2Faustin-tx-78705%3Fdma%3D%26searchRadius%3D50%26priceRange%3D%26location%3D%26marketExtension%3Dinclude%26isNewSearch%3Dfalse%26showAccelerateBanner%3Dfalse%26sortBy%3Drelevance%26numRecords%3D100&clickType=listing', 'https://images.autotrader.com/borderscaler/1500/1125/2d363e/hn/c/65158eba7cb84337900862ab8864e090.jpg'])
-
-
-car_obj=import_car()
-#order: make, year, mileage, price
-rel_info=[car_obj[1],car_obj[2],car_obj[3],car_obj[5]]
-
-def nav_page(page_name, timeout_secs=3):
-    #call new car object
-    car_obj=next_car()
-    
-    
-    nav_script = """
-        <script type="text/javascript">
-            function attempt_nav_page(page_name, start_time, timeout_secs) {
-                var links = window.parent.document.getElementsByTagName("a");
-                for (var i = 0; i < links.length; i++) {
-                    if (links[i].href.toLowerCase().endsWith("/" + page_name.toLowerCase())) {
-                        links[i].click();
-                        return;
-                    }
-                }
-                var elasped = new Date() - start_time;
-                if (elasped < timeout_secs * 1000) {
-                    setTimeout(attempt_nav_page, 100, page_name, start_time, timeout_secs);
-                } else {
-                    alert("Unable to navigate to page '" + page_name + "' after " + timeout_secs + " second(s).");
-                }
-            }
-            window.addEventListener("load", function() {
-                attempt_nav_page("%s", new Date(), %d);
-            });
-        </script>
-    """ % (page_name, timeout_secs)
-    html(nav_script)
+sys.path.insert(0, '\Applications of Python\Final Project\Final-Project---Tinder-for-Cars-main\tindercar')
 
 x = 0 
 st.title('Car Tinder')
 col1, col2, col3 , col4, = st.columns(4)
 with col1:
-    with st.container():
-        st.write("Car Make: ")
-        st.write(str(car_obj[1]))
-        st.write('Year: ') 
-        st.write(str(car_obj[2]))
-        st.write('Mileage: ')
-        st.write(str(car_obj[5]))
-        st.write('Price: ')
-        st.write(str(car_obj[3]))  
-
-                
-with col2: 
-    st.image(
-     car_obj[8],
-     width=400, # Manually Adjust the width of the image as per requirement
- ) 
-
-    
-    
+    pass
 with col4:
+    pass
+with col2:
+   st.image(
+    "https://s3-us-west-2.amazonaws.com/uw-s3-cdn/wp-content/uploads/sites/6/2017/11/04133712/waterfall.jpg",
+    width=400, # Manually Adjust the width of the image as per requirement
+) 
+st.caption("Price:{}",x)
+st.caption("Mileage:")
+
+def logic_output():
+    
+    #st.write(str(BCL.car))
     pass
 
 with col3 :
-    
     pass
 
-global yes_list
-yes_list={}
+
 def yes_car():
     global response
     response = 1
-    #creates a dictionary of 'yes' cars
-    yes_list[car_obj[0]]=car_obj
     print(response)
-    st.write(response)
+    #st.write(str(BCL.run_logic2(a)))
     
 
-
-
-
-
-
+    
 
 col1, col2, col3 , col4, col5,col6, col7, col8 = st.columns(8)
 with col1:
     pass
 with col4:
-   yes_button= st.button('Yes', key='yes',on_click = yes_car)
-   if yes_button:
-          nav_page('main')
-
+   #yes_button= st.button('Yes', on_click = yes_car)
+   pass
 with col5:
-    no_button = st.button('No')
+    #no_button = st.button('No')
+    pass
 with col2:
     pass
 with col3 :
@@ -117,7 +64,64 @@ with col8 :
 
 
 
+def logic(all_cars):
+    if 'liked_cars' not in st.session_state:
+        st.session_state['liked_cars'] = []
+    
+    q_cars = all_cars.copy()
+    #print(len(all_cars))
+    datapoints = 0
+    drawn_id = []
+    cont = 1
+    end = 0
+    count = 0
+
+    st.session_state['i'] = 0
+    #while cont ==  1:
+    datapoints += 5
+    
+    #for z in range(datapoints):
+    rand_int = random.randint(0, len(q_cars)-1)
+    while rand_int in drawn_id:
+        rand_int = random.randint(0, len(q_cars)-1)
+    drawn_id.append(rand_int)
+    show_car = all_cars[rand_int]
+    st.write('randomly chosen car',st.session_state['i'], show_car)
+    st.session_state['i']+=1
+    
+    
+    if 'nice' not in st.session_state:
+        st.session_state['nice'] = ''
+    
+    count+=1
+    responseY = st.button('Yes answer',key = count)
+    responseN = st.button('No',key = count+1000)
+    if responseY:
+        
+        #st.session_state['liked_cars'].append(q_cars[rand_int])
+        st.session_state.liked_cars.append(q_cars[rand_int])
+
+        
+    if responseN:
+        nice = 0
+        
+    #nice = st.session_state['nice']
+    #if nice == 1:
+    #    liked_cars.append(q_cars[rand_int])
+    end = len(st.session_state['liked_cars'])
+    st.write("Number of liked cars:" ,end)
+        
+        
+        
+    if len(st.session_state.liked_cars) %5 ==0 and len(st.session_state.liked_cars) != 0 :
+        contY = st.button("Continue? yes ") 
+        contN = st.button("Continue? No ")
+        if contN:
+            car_ranges = BCL.analysis_cars(np.array(st.session_state['liked_cars'],dtype=object).T[2], np.array(st.session_state['liked_cars'],dtype=object).T[3], np.array(st.session_state['liked_cars'],dtype=object).T[4])
+            q_cars = BCL.find_q_cars(all_cars, car_ranges,drawn_id)
+            
+            st.write( BCL.find_perfect_car(all_cars,stat.mean(car_ranges[0]),stat.mean(car_ranges[1]),stat.mean(car_ranges[2])))
 
 
-
-
+all_cars = st.session_state['AllCar']
+logic(all_cars)
