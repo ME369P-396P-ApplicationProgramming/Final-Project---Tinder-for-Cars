@@ -22,4 +22,8 @@ BeatifulSoup4, Numpy, Statistics, Math, Streamlit, Request
   4. To run application, enter streamlit run Cartest.py in terminal
 
 # Challenges and Future Steps
+  
+  1. Scrape and aggregate more website and data (including carfax) + include other vehicle options
+  2. Use more robust code, speed up scraping, and more accurate data algorithms
+  3. Refine GUI interface design and make it more user friendly
 
