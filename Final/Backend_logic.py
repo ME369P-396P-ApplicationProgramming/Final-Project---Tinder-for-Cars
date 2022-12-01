@@ -148,6 +148,7 @@ def get_car_info(URL):
     try:
         return [make_model, year, miles, size, price, import_info, URL, image_urls[0]]
     except:
+        return ["N/A"*8]
         print(image_urls)
         print("this is error")
 
