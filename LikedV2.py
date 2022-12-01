@@ -70,9 +70,9 @@ def logic(all_cars):
             st.write('***Year:***') 
             st.write(str(car_obj[2]))
             st.write('***Mileage:***')
-            st.write(str(car_obj[5]))
+            st.write(str(car_obj[3]))
             st.write('***Price:***')
-            st.write(str(car_obj[3]))  
+            st.write(str(car_obj[5]))  
     
                     
     # with col2: 
