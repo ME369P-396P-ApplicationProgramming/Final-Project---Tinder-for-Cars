@@ -27,6 +27,8 @@ def Add_car(likelist):
             with st.container():
                 st.write('***Car Make:***')
                 st.write(str(info_car[i][1]))
+                st.write("***Car Type:***")
+                st.write(str(info_car[i][4]))
                 st.write('***Year:***') 
                 st.write(str(info_car[i][2]))
                 st.write('***Mileage:***')

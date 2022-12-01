@@ -65,6 +65,8 @@ def logic(all_cars):
         with st.container():
             st.write("***Car Make:***")
             st.write(str(car_obj[1]))
+            st.write("***Car Type:***")
+            st.write(str(car_obj[4]))
             st.write('***Year:***') 
             st.write(str(car_obj[2]))
             st.write('***Mileage:***')
@@ -153,8 +155,10 @@ def logic(all_cars):
             with col1:
                 with st.container():
                     
-                    st.write("***Car e:***")
+                    st.write("***Car Make:***")
                     st.write(str(matched_car[1]))
+                    st.write("***Car Type:***")
+                    st.write(str(car_obj[4]))
                     st.write('***Year:***') 
                     st.write(str(matched_car[2]))
                     st.write('***Mileage:***')
