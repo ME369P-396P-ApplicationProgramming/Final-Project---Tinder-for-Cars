@@ -2,7 +2,7 @@
 """
 Created on Wed Nov 30 12:52:44 2022
 
-@author: rohit
+@author: rohi
 """
 import streamlit as st
 import sys
