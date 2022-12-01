@@ -30,5 +30,4 @@ def input_page():
         all_CarDet = BCL.run_logic(info)
         st.session_state['AllCar'] = all_CarDet
         
-
 input_page()
