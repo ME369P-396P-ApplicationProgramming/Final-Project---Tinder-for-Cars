@@ -89,33 +89,32 @@ def logic(all_cars):
         
         
     car_obj = all_cars[rand_int]
-    if st.session_state.show ==1:
-        col1, col2, col3 , col4, = st.columns(4)
-        with col1:
-            with st.container():
-                st.write("Car Make: ")
-                st.write(str(car_obj[1]))
-                st.write('Year: ') 
-                st.write(str(car_obj[2]))
-                st.write('Mileage: ')
-                st.write(str(car_obj[5]))
-                st.write('Price: ')
-                st.write(str(car_obj[3]))  
-        
-                        
-        with col2: 
-            st.image(
-             car_obj[8],
-             width=400, # Manually Adjust the width of the image as per requirement
-         )   
-            
-        with col4:
-            pass
-        
-        with col3 :
-            
-            pass
+    col1, col2, col3 , col4, = st.columns(4)
+    with col1:
+        with st.container():
+            st.write("Car Make: ")
+            st.write(str(car_obj[1]))
+            st.write('Year: ') 
+            st.write(str(car_obj[2]))
+            st.write('Mileage: ')
+            st.write(str(car_obj[5]))
+            st.write('Price: ')
+            st.write(str(car_obj[3]))  
     
+                    
+    with col2: 
+        st.image(
+         car_obj[8],
+         width=400, # Manually Adjust the width of the image as per requirement
+     )   
+        
+    with col4:
+        pass
+    
+    with col3 :
+        
+        pass
+
 
 
 
