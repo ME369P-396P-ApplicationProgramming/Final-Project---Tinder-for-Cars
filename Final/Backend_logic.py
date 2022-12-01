@@ -2,7 +2,7 @@
 """
 Created on Wed Nov 30 15:09:50 2022
 
-@author: emils
+@author: emil
 """
 
 # -*- coding: utf-8 -*-
