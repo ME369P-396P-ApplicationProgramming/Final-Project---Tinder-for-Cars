@@ -2,9 +2,9 @@
 
 This will create a web application that will display cars in surrounding areas that can be 'liked' based on some preset parameters.
 
-#About the GitHub
+# About the GitHub
 
-Building this application has been challenging, and the group went through a lot of different versions of code. Within the main branch older pieces of code can be found, to see the developement. But to see and use the right application the "Final" folder, should be used.
+Building this application has been challenging, and the group went through a lot of different versions of code. Within the main branch older pieces of code can be found, to see the developement, this might not be relavant. But to see and use the right application the "Final" folder, should be used.
 
 # Members
 
