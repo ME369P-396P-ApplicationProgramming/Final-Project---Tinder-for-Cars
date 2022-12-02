@@ -33,5 +33,4 @@ BeatifulSoup4, Numpy, Statistics, Math, Streamlit, Request
 
 # Architecture
   
-The code consist of "Cartest.py", which runs the code, the "Backend_logic.py", which stores the functions used for the backend, and the different GUI pages is found in the folder "Pages", one for liking, one for storing. A functional programming approach is used for running the logic behind the code, and the names of the functions should be self explanatory. 
-
+The code consist of "Cartest.py", which runs the code, the "Backend_logic.py", which stores the functions used for the backend, and the different GUI pages is found in the folder "Pages", one for liking, one for storing. A functional programming approach is used for running the logic behind the code.
