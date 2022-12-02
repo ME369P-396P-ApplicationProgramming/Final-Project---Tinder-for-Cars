@@ -2,6 +2,10 @@
 
 This will create a web application that will display cars in surrounding areas that can be 'liked' based on some preset parameters.
 
+#About the GitHub
+
+Building this application has been challenging, and the group went through a lot of different versions of code. Within the main branch older pieces of code can be found, to see the developement. But to see and use the right application the "Final" folder, should be used.
+
 # Members
 
 Hannah Long, Rohith Maturi, Kevin Nguyen, Emil Søeberg
@@ -18,7 +22,7 @@ BeatifulSoup4, Numpy, Statistics, Math, Streamlit, Request
 
   1. Download zip file from this repository
   2. Make sure all files from the "Final" Folder are in the same folder
-  3. Open up Cartest.py
+  3. Open up "Cartest.py"
   4. To run application, enter streamlit run Cartest.py in terminal
 
 # Challenges and Future Steps
@@ -26,4 +30,8 @@ BeatifulSoup4, Numpy, Statistics, Math, Streamlit, Request
   1. Scrape and aggregate more website and data (including carfax) + include other vehicle options
   2. Use more robust code, speed up scraping, and more accurate data algorithms
   3. Refine GUI interface design and make it more user friendly
+
+# Architecture
+  
+The code consist of "Cartest.py", which runs the code, the "Backend_logic.py", which stores the functions used for the backend, and the different GUI pages is found in the folder "Pages", one for liking, one for storing. A functional programming approach is used for running the logic behind the code, and the names of the functions should be self explanatory. 
 
