@@ -4,6 +4,9 @@ Created on Wed Nov 30 12:52:44 2022
 
 @author: rohi
 """
+
+## This file writes and runs the Yes or NO car page. It receives information from the Backend logic file and presents the data in a user friendly way onto the screen.
+
 import streamlit as st
 import sys
 import Backend_logic as BCL
@@ -16,7 +19,7 @@ import math as m
 sys.path.insert(0, r'C:\Users\hanna\OneDrive\Documents\UT Semester Courses\Fall 2022\Programming\Final Assignment\Final-Project---Tinder-for-Cars-main\Final-Project---Tinder-for-Cars-rohithnath2-FinalWorkingCode')
 
 
-
+# This method is the brains of this file. It stores the liked cars and makes sure that cars do not show up twice.
 #Logic on top
 def logic(all_cars):
     count=0
@@ -57,8 +60,8 @@ def logic(all_cars):
 
     st.session_state['i']+=1
     
-
-        
+    
+    # These next few lines print out the next qualified car to show the user.     
     # if st.session_state.show ==1:
     col1, col3 , col4, col5, col6,col7,col8 = st.columns(7)
     with col1:
@@ -91,18 +94,17 @@ def logic(all_cars):
       )   
     
     with col3 :
-       
-        # for i in range(20):
-        #     st.write(" ")
-        # responseY = st.button('❤️',key = count)
         pass
 
     with col5:
-        
+        ## This button displays the like button and records the response if pressed
+
         for i in range(20):
            st.write(" ")
         responseY = st.button('❤️',key = count)
     with col6:
+        ## This button displays the dislike button and records the response if pressed
+
         for i in range(20):
             st.write(" ")
         responseN = st.button('❌',key = count+1000)
@@ -117,7 +119,7 @@ def logic(all_cars):
     if 'responseY' not in st.session_state:
         st.session_state['responseY'] = '' 
         
-    
+    # If the yes button is pressed the following code is run, which allows the liked cars to be appended to a list for other use. 
     if responseY:
                 
         st.session_state.liked_cars.append(car_obj)
@@ -131,7 +133,7 @@ def logic(all_cars):
         # st.write("Number of liked cars:" ,end)
         
         
-        
+    # This next bit of code is triggered after there are 5 liked cars and allows the user to choose to continue or end the program and find their perfect match of a car   
     if len(st.session_state.liked_cars) %5 == 0 and len(st.session_state.liked_cars) != 0 :
         #contY = st.button("Continue? yes ") 
         contN = st.button("Press Here to Find your Perfect Car ")
@@ -151,7 +153,7 @@ def logic(all_cars):
           
             
 
-            
+            # This snippet of code displays the perfect car that it receives from the backend logic file
             with col1:
                 with st.container():
                     
