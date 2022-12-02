@@ -20,8 +20,8 @@ def Add_car(likelist):
     
     
     for i in range(len(info_car)):
-    #     cols = st.
-    #     with col[i]:
+    #     
+    #     The next few lines allows for all the car details to be broken up and printed in the right format on the Likedcar page.
         col1, col2, col3 , col4, = st.columns(4)
         with col1:
             with st.container():
