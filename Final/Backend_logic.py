@@ -16,6 +16,7 @@ import statistics as stat
 import random
 import math as m
 
+#Makes a list of all the pages
 def search_cars(zip_code, r, min_price, max_price):
     
     URL = f"https://www.autotrader.com/cars-for-sale/cars-between-{min_price}-and-{max_price}/austin-tx-{zip_code}?dma=&searchRadius={r}&priceRange=&location=&marketExtension=include&isNewSearch=false&showAccelerateBanner=false&sortBy=relevance&numRecords=100"
@@ -41,7 +42,8 @@ def search_cars(zip_code, r, min_price, max_price):
     
     
     return all_URLs
-    
+
+#Gets all links on one page     
 def get_all_links(URL):
     
     page = requests.get(URL)
@@ -61,6 +63,7 @@ def get_all_links(URL):
     
     return unique_car_links
 
+#Gets link of all cars on all pages
 def all_urls_of_search(zip_code, r, min_price, max_price):
     page_links = search_cars(zip_code, r, min_price, max_price)
     
@@ -72,7 +75,8 @@ def all_urls_of_search(zip_code, r, min_price, max_price):
     car_URL = car_URL.tolist()
     
     return car_URL
-    
+
+#Gets all info about one car    
 def get_car_info(URL):
     page = requests.get(URL)
     page.status_code
@@ -152,6 +156,7 @@ def get_car_info(URL):
         print(image_urls)
         print("this is error")
 
+#Calulate ranges for next cars to qualify
 def analysis_cars(year, milage, car_style): #list of car attributesr
     mean_year = stat.mean(year)
     sd_year = stat.stdev(year)
@@ -173,7 +178,7 @@ def analysis_cars(year, milage, car_style): #list of car attributesr
     style_range = [round(mean_style-sd_style),round(mean_style+sd_style)]
 
     return year_range, milage_range, style_range
-    
+#Gets link of all cars on all pages    
 def all_urls_of_search(zip_code, r, min_price, max_price):
     page_links = search_cars(zip_code, r, min_price, max_price)
     
@@ -186,6 +191,7 @@ def all_urls_of_search(zip_code, r, min_price, max_price):
     
     return car_URL
 
+#Stores all car info, and link each car with an id
 def get_all_cars(zip_code,r ,min_price, max_price):
     urls = all_urls_of_search(zip_code, r, min_price, max_price)
     
@@ -201,6 +207,7 @@ def show_car(car):
     
     return car
 
+#Finds the best car based on a list of car input (typically liked cars)
 def find_perfect_car(cars, year, milage, car_style): 
     z_score = []
     
@@ -213,6 +220,7 @@ def find_perfect_car(cars, year, milage, car_style):
     print(cars[z_score.index(min(z_score))])
     return cars[z_score.index(min(z_score))]
 
+#Finds the qualified cars after 5 liked cars
 def find_q_cars(all_cars, car_ranges, drawn_id): 
     #global drawn_id
     style = ["Hatchback","Coupe" , "Sedan", "Convertible", "Wagon", "Sport Utility", "Truck", "Van" ]
@@ -224,6 +232,7 @@ def find_q_cars(all_cars, car_ranges, drawn_id):
     
     return q_cars
 
+#imports input from GUI
 def import_inputs(info):
     MinPrice =  info[0]
     MaxPrice = info[1] 
@@ -231,6 +240,7 @@ def import_inputs(info):
     radius =  info[3] 
     return [MinPrice,MaxPrice,zipcode,radius]
 
+#First part of backend when interacting with user
 def run_logic(info):
     '''
     zip_code = 
@@ -250,6 +260,7 @@ def run_logic(info):
     return all_cars
     # send all_cars to liked_cars(all_cars)
 
+#Second part of backend when interacting with user
 def run_logic2(all_cars):
    
     liked_cars = []
