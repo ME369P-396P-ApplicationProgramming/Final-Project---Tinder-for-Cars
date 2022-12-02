@@ -1,6 +1,9 @@
 import streamlit as st
 import Backend_logic as BCL
 
+## This file is the Homepage of car tinder. This is the main file that should be run through streamlit which will automatically trigger the rest of the pages. 
+
+# This important function "input_page" takes in the inputs from the user to run the rest of the files. 
 def input_page():
     
     st.set_page_config(page_title = "Car Tinder")
@@ -27,7 +30,9 @@ def input_page():
         st.session_state['AllCar'] = ''
     
     if st.session_state.submit_button:
+        # The inputs are sent to the "Backend logic" file to run analysis and give a car after scraping. 
         all_CarDet = BCL.run_logic(info)
+        # All the car details are saved in session state to allow accessibility from other files
         st.session_state['AllCar'] = all_CarDet
         
 input_page()
