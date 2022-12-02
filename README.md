@@ -1,6 +1,6 @@
 # Final-Project---Tinder-for-Cars
 
-This will create a web application that will display cars in surrounding areas that can be 'liked' based on some preset parameters.
+This will create a web application that will display cars in surrounding areas that can be 'liked' based on some preset parameters. Here is a link for our product presentation, that goes through the most important concepts of this project: https://docs.google.com/presentation/d/1kLDLlC_wndEY2eSFbvtL4KMPevXhRjZ9/edit#slide=id.p1
 
 # About the GitHub
 
